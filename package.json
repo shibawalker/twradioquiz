@@ -1,0 +1,1 @@
+{"name":"radioquiz","private":true,"type":"module","scripts":{"dev":"python3 -m http.server 5173 --bind 0.0.0.0 --directory public","import":"python3 scripts/import_pdf.py","test":"node --test tests/core.test.js","test:e2e":"playwright test"},"devDependencies":{"@playwright/test":"^1.56.0"}}

@@ -1,0 +1,2 @@
+import {defineConfig,devices} from '@playwright/test';
+export default defineConfig({testDir:'tests',testMatch:'**/*.spec.js',fullyParallel:false,workers:1,use:{baseURL:'http://127.0.0.1:5181',...devices['iPhone 13'],defaultBrowserType:'chromium',launchOptions:{executablePath:process.env.CHROME_PATH||(process.env.CI?undefined:'/usr/bin/google-chrome'),args:['--no-sandbox']},screenshot:'only-on-failure'},webServer:{command:'python3 scripts/test_server.py',url:'http://127.0.0.1:5181',reuseExistingServer:true}});
