@@ -4,7 +4,7 @@ for(const grade of ['3','2','1'])test(`grade ${grade}: unknown requires confirma
  await page.goto(`/radioquiz/?grade=${grade}#setup/all/`);await page.locator('[data-action^="start:"]').click();
  const unknown=page.locator('[data-action="select:-1"]');
  await unknown.click();expect((await read()).stats).toEqual({});await page.locator('[data-action="select:0"]').click();await expect(unknown).toHaveAttribute('aria-pressed','false');expect((await read()).stats).toEqual({});
- await unknown.click();await page.reload();await expect(unknown).toHaveAttribute('aria-pressed','true');expect((await read()).stats).toEqual({});
+ await unknown.click();await expect(unknown).toHaveAttribute('aria-pressed','true');await page.reload();await expect(unknown).toHaveAttribute('aria-pressed','true');expect((await read()).stats).toEqual({});
  await page.locator('[data-action="confirm"]').click();await expect(page.locator('.feedback')).toContainText('已加入錯題庫');await expect(page.locator('.feedback')).toContainText('你的答案：我不會');await expect(page.locator('.feedback')).toContainText('正確答案：');await expect(unknown).toBeDisabled();
  const saved=await read(),id=saved.session.ids[0];expect(saved.stats[id].answer_count).toBe(1);expect(saved.stats[id].wrong_count).toBe(1);expect(saved.stats[id].ever_wrong).toBe(true);expect(saved.stats[id].last_answer).toBe(-1);
  await page.reload();expect((await read()).stats[id].answer_count).toBe(1);await expect(page.locator('.feedback')).toContainText('我不會');

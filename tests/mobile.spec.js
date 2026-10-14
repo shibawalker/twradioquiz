@@ -13,7 +13,7 @@ test('mobile selection, confirmation, sequential resume, wrong history and stats
  await page.goto('/#stats');await expect(page.locator('main')).toContainText('答對 1 次 · 答錯 1 次');
 });
 test('shuffle fixed after reload and new page, chapter isolation, mobile overflow and diagram',async({page,context})=>{
- await start(page,'all','shuffle');const s=(await state(page)).session;expect(new Set(s.ids).size).toBe(606);await answer(page,true);await page.getByRole('button',{name:'下一題',exact:true}).click();await page.reload();expect((await state(page)).session.ids).toEqual(s.ids);
+ await start(page,'all','shuffle');const s=(await state(page)).session;expect(new Set(s.ids).size).toBe(606);await answer(page,true);await page.getByRole('button',{name:'下一題',exact:true}).click();await expect(page.locator('main')).toContainText('第 2 / 606 題');await page.reload();expect((await state(page)).session.ids).toEqual(s.ids);
  const other=await context.newPage();await other.goto('/');await other.getByRole('button',{name:/繼續上次/}).click();expect((await state(other)).session.index).toBe(1);expect((await state(other)).session.ids).toEqual(s.ids);await other.close();
  page.on('dialog',d=>d.accept());await start(page,'chapter','sequential','2');expect((await state(page)).session.ids).toHaveLength(184);
  await page.evaluate(async()=>{await (await import('/db.js')).mutate(st=>{st.session.index=84;});});await page.reload();await expect(page.locator('figure img')).toBeVisible();expect(await page.locator('figure img').evaluate(el=>el.complete&&el.naturalWidth>0)).toBe(true);
