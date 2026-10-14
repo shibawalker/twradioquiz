@@ -33,7 +33,7 @@ npm run dev
 2. Settings → Pages → Build and deployment → Source 選 **GitHub Actions**。
 3. Actions → **Deploy GitHub Pages** → Run workflow，或在設定完成後推送新 commit。
 4. 流程執行核心與瀏覽器測試，通過後只上傳 `public/`。
-5. 網址為 `https://shibawalker.github.io/twradioquiz/`；若 repo 命名 `帳號.github.io`，則使用網域根目錄。
+。
 
 資源、JSON 與附圖皆使用相對路徑，支援專案子路徑；hash 路由不需要伺服器 rewrite。等級以 `?grade=1`、`?grade=2`、`?grade=3` 表示。沒有 grade 參數時沿用原二等入口，以保留舊書籤行為。
 
