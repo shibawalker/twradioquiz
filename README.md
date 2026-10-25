@@ -1,5 +1,6 @@
 # 業餘電臺 · 題庫練習
-
+[題庫網址](https://shibawalker.github.io/twradioquiz/)
+https://shibawalker.github.io/twradioquiz/
 非營利、僅供個人學習與練習的 mobile-first 台灣一、二、三等業餘無線電題庫工具。純靜態 HTML/CSS/JavaScript，沒有登入或後端；IndexedDB 保存個人的學習資料。Production 只需 `public/`，不會解析 PDF，也不使用 runtime AI。
 
 首頁由上到下：
